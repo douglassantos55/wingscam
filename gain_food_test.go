@@ -5,21 +5,21 @@ import (
 )
 
 func TestFeederIsCreatedWithRandomFoods(t *testing.T) {
-    // Use higher quantities to reduce change of failing
+	// Use higher quantities to reduce change of failing
 	feeder1 := CreateFeeder(10)
 	feeder2 := CreateFeeder(10)
 
-    equals := uint8(0)
+	equals := uint8(0)
 
-    for i, food := range feeder1.foods {
-        if feeder2.foods[i] == food {
-            equals++
-        }
-    }
+	for i, food := range feeder1.foods {
+		if feeder2.foods[i] == food {
+			equals++
+		}
+	}
 
-    if equals == feeder1.Count() {
-        t.Errorf("Feeder should have random Food")
-    }
+	if equals == feeder1.Count() {
+		t.Errorf("Feeder should have random Food")
+	}
 }
 
 func TestFoodIsRemovedFromFeeder(t *testing.T) {
@@ -53,6 +53,16 @@ func TestFeederIsRefilledWhenItHasOnlyOneFood(t *testing.T) {
 func TestFeederIsRefilledWhenItHasNoFood(t *testing.T) {
 	feeder := CreateFeeder(0)
 	feeder.GetFood(Fish)
+
+	if feeder.Count() != 4 {
+		t.Errorf("Feeder should have been refilled")
+	}
+}
+
+func TestFeederIsRefilledWhenItHasAllSameFood(t *testing.T) {
+	feeder := CreateFeeder(5)
+	feeder.foods = []Food{Fish, Fish, Fish, Fish, Fish}
+	feeder.GetFood(Seed)
 
 	if feeder.Count() != 4 {
 		t.Errorf("Feeder should have been refilled")

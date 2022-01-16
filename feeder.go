@@ -7,7 +7,6 @@ import (
 
 type Feeder struct {
 	foods []Food
-	count uint8
 }
 
 func CreateFeeder(initial uint8) *Feeder {
@@ -18,19 +17,26 @@ func CreateFeeder(initial uint8) *Feeder {
 }
 
 func (feeder *Feeder) fill(initial uint8) {
+	feeder.foods = []Food{}
+
 	for i := uint8(0); i < initial; i++ {
 		random, _ := rand.Int(rand.Reader, big.NewInt(Fish+1))
 		feeder.foods = append(feeder.foods, Food(random.Uint64()))
 	}
 }
 
-func (feeder *Feeder) refill() {
-	feeder.fill(5 - feeder.Count())
+func (feeder *Feeder) AllSame() bool {
+	for i := uint8(0); i < feeder.Count()-2; i++ {
+		if feeder.foods[i] != feeder.foods[i+1] {
+			return false
+		}
+	}
+	return true
 }
 
 func (feeder *Feeder) GetFood(foodType Food) Food {
-	if feeder.Count() <= 1 {
-		feeder.refill()
+	if feeder.Count() <= 1 || feeder.AllSame() {
+		feeder.fill(5)
 	}
 
 	for i, food := range feeder.foods {
