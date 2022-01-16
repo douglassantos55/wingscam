@@ -58,7 +58,7 @@ func TestDrawFromTray(t *testing.T) {
     }
 
     if tray.Count() != 1 {
-        t.Errorf("Expected tray to have one card, got %d", len(tray.cards))
+        t.Errorf("Expected tray to have one card, got %d", tray.Count())
     }
 
     if deck.Draw() != nil {
