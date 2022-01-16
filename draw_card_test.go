@@ -38,3 +38,48 @@ func TestDrawFromEmptyDeck(t *testing.T) {
         t.Error("Player should not get cards from empty deck")
     }
 }
+
+func TestDrawFromTray(t *testing.T) {
+    mocking := &Card{name: "Mocking bird"}
+    cockatiel := &Card{name: "Cockatiel"}
+    goose := &Card{name: "Goose"}
+
+    deck := CreateDeck(mocking, cockatiel, goose)
+
+    tray := CreateTray(3)
+    tray.Replenish(deck)
+
+    player := CreatePlayer(deck)
+    player.DrawCard(tray.GetCard(0))
+    player.DrawCard(tray.GetCard(0))
+
+    if player.CountCardsInHand() != 2 {
+        t.Errorf("Expected player to have two cards in hand, got %d", player.CountCardsInHand())
+    }
+
+    if tray.Count() != 1 {
+        t.Errorf("Expected tray to have one card, got %d", len(tray.cards))
+    }
+
+    if deck.Draw() != nil {
+        t.Errorf("Expected deck to be empty")
+    }
+}
+
+func TestGetCardOutOfBoundsFromTray(t *testing.T) {
+    mocking := &Card{name: "Mocking bird"}
+    cockatiel := &Card{name: "Cockatiel"}
+    goose := &Card{name: "Goose"}
+
+    deck := CreateDeck(mocking, cockatiel, goose)
+
+    tray := CreateTray(3)
+    tray.Replenish(deck)
+
+    player := CreatePlayer(deck)
+    player.DrawCard(tray.GetCard(5))
+
+    if player.CountCardsInHand() != 0 {
+        t.Errorf("Expected player to not have cards in hand, got %d", player.CountCardsInHand())
+    }
+}

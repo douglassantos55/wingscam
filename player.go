@@ -14,6 +14,12 @@ func (player *Player) CountCardsInHand() int {
 	return player.hand.Count()
 }
 
+func (player *Player) DrawCard(card *Card) {
+    if card != nil {
+        player.hand.Push(card)
+    }
+}
+
 func (player *Player) DrawCards(qty int) {
 	for i := 0; i < qty; i++ {
 		card := player.deck.Draw()
