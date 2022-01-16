@@ -24,7 +24,7 @@ func TestFeederIsCreatedWithRandomFoods(t *testing.T) {
 
 func TestFoodIsRemovedFromFeeder(t *testing.T) {
 	feeder := CreateFeeder(5)
-	feeder.GetFood(Seed)
+	feeder.GetFood(2)
 
 	if feeder.Count() != 4 {
 		t.Errorf("Should have removed food from feeder")
@@ -34,16 +34,18 @@ func TestFoodIsRemovedFromFeeder(t *testing.T) {
 func TestPlayerGetsFood(t *testing.T) {
 	feeder := CreateFeeder(5)
 	player := CreatePlayer(CreateDeck())
-	player.GainFood(feeder.GetFood(Fish))
 
-	if !player.HasFood(Fish) {
+	food := feeder.GetFood(1)
+	player.GainFood(food)
+
+	if !player.HasFood(food) {
 		t.Errorf("Player should have a Fish")
 	}
 }
 
 func TestFeederIsRefilledWhenItHasOnlyOneFood(t *testing.T) {
 	feeder := CreateFeeder(1)
-	feeder.GetFood(Fish)
+	feeder.GetFood(0)
 
 	if feeder.Count() != 4 {
 		t.Errorf("Feeder should have been refilled")
@@ -52,7 +54,7 @@ func TestFeederIsRefilledWhenItHasOnlyOneFood(t *testing.T) {
 
 func TestFeederIsRefilledWhenItHasNoFood(t *testing.T) {
 	feeder := CreateFeeder(0)
-	feeder.GetFood(Fish)
+	feeder.GetFood(0)
 
 	if feeder.Count() != 4 {
 		t.Errorf("Feeder should have been refilled")
@@ -62,7 +64,7 @@ func TestFeederIsRefilledWhenItHasNoFood(t *testing.T) {
 func TestFeederIsRefilledWhenItHasAllSameFood(t *testing.T) {
 	feeder := CreateFeeder(5)
 	feeder.foods = []Food{Fish, Fish, Fish, Fish, Fish}
-	feeder.GetFood(Seed)
+	feeder.GetFood(4)
 
 	if feeder.Count() != 4 {
 		t.Errorf("Feeder should have been refilled")

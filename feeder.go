@@ -34,19 +34,18 @@ func (feeder *Feeder) AllSame() bool {
 	return true
 }
 
-func (feeder *Feeder) GetFood(foodType Food) Food {
+func (feeder *Feeder) GetFood(index uint8) Food {
 	if feeder.Count() <= 1 || feeder.AllSame() {
 		feeder.fill(5)
 	}
 
-	for i, food := range feeder.foods {
-		if food == foodType {
-			feeder.foods = append(feeder.foods[:i], feeder.foods[i+1:]...)
-			return food
-		}
-	}
+    if index < feeder.Count() {
+        food := feeder.foods[index]
+        feeder.foods = append(feeder.foods[:index], feeder.foods[index+1:]...)
+        return food
+    }
 
-	panic("Food not in Feeder")
+    panic("Out of bounds")
 }
 
 func (feeder *Feeder) Count() uint8 {
