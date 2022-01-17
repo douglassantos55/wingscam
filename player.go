@@ -15,9 +15,9 @@ func (player *Player) CountCardsInHand() int {
 }
 
 func (player *Player) DrawCard(card *Card) {
-    if card != nil {
-        player.hand.Push(card)
-    }
+	if card != nil {
+		player.hand.Push(card)
+	}
 }
 
 func (player *Player) DrawCards(qty int) {
@@ -38,4 +38,9 @@ func (player *Player) HasFood(food Food) bool {
 		}
 	}
 	return false
+}
+
+func (player *Player) Has(condition Condition) bool {
+    result := condition.Apply(player.foods)
+	return len(result) != 0
 }

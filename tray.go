@@ -22,9 +22,9 @@ func (tray *Tray) Replenish(deck *Deck) {
 }
 
 func (tray *Tray) GetCard(index uint8) *Card {
-    if index < tray.size {
-        return tray.cards.Get(index)
-    }
+	if index < tray.size {
+		return tray.cards.Get(index)
+	}
 
-    return nil
+	return nil
 }
