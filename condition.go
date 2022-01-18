@@ -30,11 +30,9 @@ func (cond OrCondition) Apply(source []Food) []uint8 {
 	matches := []uint8{}
 
 	for index, food := range source {
-		for i, req := range cond.requirements {
+		for _, req := range cond.requirements {
 			if req == food {
 				matches = append(matches, uint8(index))
-                // Once found, remove to reduce iterations from now on
-                cond.requirements = append(cond.requirements[:i], cond.requirements[i+1:]...)
 			}
 		}
 	}
