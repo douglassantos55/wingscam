@@ -3,7 +3,7 @@ package main
 type Player struct {
 	deck  *Deck
 	foods []Food
-	board [][]*Card
+	board *Board
 	hand  *LinkedList
 }
 
@@ -11,11 +11,11 @@ func CreatePlayer(deck *Deck) *Player {
 	return &Player{
 		deck: deck,
 		hand: &LinkedList{},
-		board: [][]*Card{
-			{nil, nil, nil, nil, nil},
-			{nil, nil, nil, nil, nil},
-			{nil, nil, nil, nil, nil},
-		},
+		board: CreateBoard(
+			CreateRow(Forest, 5),
+			CreateRow(Grassland, 5),
+			CreateRow(Wetland, 5),
+		),
 	}
 }
 
@@ -30,13 +30,7 @@ func (player *Player) DrawCard(card *Card) {
 }
 
 func (player *Player) PlayCard(card *Card) {
-    for i := 0; i < 3; i++ {
-        for j := 0; j < 5; j++ {
-            if player.board[i][j] == nil {
-                player.board[i][j] = card
-            }
-        }
-    }
+	player.board.PlaceCard(card)
 }
 
 func (player *Player) DrawCards(qty int) {
@@ -77,23 +71,17 @@ func (player *Player) PayEggs(qty uint8) bool {
 	sum := uint8(0)
 	candidates := []*Card{}
 
-	for i := 0; i < 3; i++ {
-		for j := 0; j < 5; j++ {
-			card := player.board[i][j]
+	for _, card := range player.board.GetCards() {
+		if card.CountEggs() > 0 {
+			sum += card.CountEggs()
+			candidates = append(candidates, card)
 
-			if card != nil {
-				if card.CountEggs() > 0 {
-					sum += card.CountEggs()
-					candidates = append(candidates, card)
-
-					if sum >= qty {
-						for _, candidate := range candidates {
-							qty -= candidate.DropEggs(qty)
-						}
-
-						return true
-					}
+			if sum >= qty {
+				for _, candidate := range candidates {
+					qty -= candidate.DropEggs(qty)
 				}
+
+				return true
 			}
 		}
 	}

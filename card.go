@@ -5,15 +5,17 @@ type Card struct {
 	eggs      uint8
 	eggsLimit uint8
 	eggsCost  uint8
+	habitat   Habitat
 	foodCost  Condition
 }
 
-func CreateCard(name string, eggsLimit uint8, foodCost Condition, eggsCost uint8) *Card {
+func CreateCard(name string, eggsLimit uint8, foodCost Condition, eggsCost uint8, habitat Habitat) *Card {
 	return &Card{
 		name:      name,
 		eggsLimit: eggsLimit,
 		eggsCost:  eggsCost,
 		foodCost:  foodCost,
+		habitat:   habitat,
 	}
 }
 
@@ -30,22 +32,22 @@ func (card *Card) LayEggs(qty uint8) {
 }
 
 func (card *Card) DropEggs(qty uint8) uint8 {
-    dropped := uint8(0)
+	dropped := uint8(0)
 
 	for i := uint8(0); i < qty; i++ {
 		if card.eggs > 0 {
-            dropped++
+			dropped++
 			card.eggs--
 		}
 	}
 
-    return dropped
+	return dropped
 }
 
 func (card *Card) GetFoodCost() Condition {
-    return card.foodCost
+	return card.foodCost
 }
 
 func (card *Card) GetEggsCost() uint8 {
-    return card.eggsCost
+	return card.eggsCost
 }
