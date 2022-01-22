@@ -7,6 +7,7 @@ type Card struct {
 	eggsCost  uint8
 	habitat   Habitat
 	foodCost  Condition
+	powers    map[Trigger]Action
 }
 
 func CreateCard(name string, eggsLimit uint8, foodCost Condition, eggsCost uint8, habitat Habitat) *Card {
@@ -16,6 +17,7 @@ func CreateCard(name string, eggsLimit uint8, foodCost Condition, eggsCost uint8
 		eggsCost:  eggsCost,
 		foodCost:  foodCost,
 		habitat:   habitat,
+		powers:    make(map[Trigger]Action),
 	}
 }
 
@@ -50,4 +52,16 @@ func (card *Card) GetFoodCost() Condition {
 
 func (card *Card) GetEggsCost() uint8 {
 	return card.eggsCost
+}
+
+func (card *Card) GivePower(trigger Trigger, action Action) {
+	card.powers[trigger] = action
+}
+
+func (card *Card) Trigger(trigger Trigger) {
+	power := card.powers[trigger]
+
+	if power != nil {
+		power.Execute()
+	}
 }

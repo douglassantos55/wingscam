@@ -82,6 +82,7 @@ func (row *Row) PlaceCard(card *Card) int {
 	for i, col := range row.columns {
 		if col.Empty() {
 			col.PlaceCard(card)
+            row.ActivatePowers(i)
             return i
 		}
 	}
@@ -89,16 +90,29 @@ func (row *Row) PlaceCard(card *Card) int {
     return -1
 }
 
+func (row *Row) ActivatePowers(start int) {
+    for i := start-1; i >= 0; i-- {
+        card := row.columns[i].card
+
+        if card != nil {
+            card.Trigger(WhenActivated)
+        }
+    }
+}
+
 type Column struct {
 	card *Card
 }
 
+// int(i / 2) + 2 --> eggs
+// int(i / 2) + 1 --> food and card
 func (col *Column) Empty() bool {
 	return col.card == nil
 }
 
 func (col *Column) PlaceCard(card *Card) {
 	col.card = card
+    card.Trigger(WhenPlayed)
 }
 
 func (col *Column) GetCard() *Card {

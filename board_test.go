@@ -102,3 +102,21 @@ func TestItPlacesCardsInMultipleHabitats(t *testing.T) {
         t.Errorf("Expectd grassland to have 1 card, got %d", board.GetHabitat(Grassland).CountCards())
     }
 }
+
+func TestItDoesNotPlaceMoreThanTheNumberOfColumns(t *testing.T) {
+    board := CreateBoard(
+        CreateRow(Forest, 2),
+    )
+
+    card := CreateCard("Cockatiel", 5, nil, 0, Forest)
+    other := CreateCard("Mocking", 5, nil, 0, Forest)
+    yetanother := CreateCard("Goose", 5, nil, 0, Forest)
+
+    board.PlaceCard(card)
+    board.PlaceCard(other)
+    index := board.PlaceCard(yetanother)
+
+    if index != -1 {
+        t.Errorf("Expected card to not be placed, instead got position: %d", index)
+    }
+}
