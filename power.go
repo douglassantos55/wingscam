@@ -1,21 +1,16 @@
 package main
 
-type Action interface{
+type Power interface{
     Execute()
 }
 
-type Power struct{
-    trigger Trigger
-    action Action
-}
-
-type LayEggAction struct {
+type LayEggPower struct {
 	qty uint8
     card *Card
 }
 
-func (action LayEggAction) Execute() {
-    action.card.LayEggs(action.qty)
+func (power LayEggPower) Execute() {
+    power.card.LayEggs(power.qty)
 }
 
 type Trigger uint8

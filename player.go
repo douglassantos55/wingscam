@@ -12,9 +12,9 @@ func CreatePlayer(deck *Deck) *Player {
 		deck: deck,
 		hand: &LinkedList{},
 		board: CreateBoard(
-			CreateRow(Forest, 5),
-			CreateRow(Grassland, 5),
-			CreateRow(Wetland, 5),
+			CreateRow(Forest, 5, GainFood),
+			CreateRow(Grassland, 5, LayEggs),
+			CreateRow(Wetland, 5, DrawCards),
 		),
 	}
 }

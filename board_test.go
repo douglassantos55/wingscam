@@ -4,9 +4,9 @@ import "testing"
 
 func TestItPlacesCardInProperHabitat(t *testing.T) {
     board := CreateBoard(
-        CreateRow(Forest, 5),
-        CreateRow(Grassland, 5),
-        CreateRow(Wetland, 5),
+        CreateRow(Forest, 5, GainFood),
+        CreateRow(Grassland, 5, LayEggs),
+        CreateRow(Wetland, 5, DrawCards),
     )
 
     card := CreateCard("Cockatiel", 5, nil, 0, Forest)
@@ -31,9 +31,9 @@ func TestItPlacesCardInProperHabitat(t *testing.T) {
 
 func TestItPlacesCardInLeftMostExposedColumn(t *testing.T) {
     board := CreateBoard(
-        CreateRow(Forest, 5),
-        CreateRow(Grassland, 5),
-        CreateRow(Wetland, 5),
+        CreateRow(Forest, 5, GainFood),
+        CreateRow(Grassland, 5, LayEggs),
+        CreateRow(Wetland, 5, DrawCards),
     )
 
     card := CreateCard("Cockatiel", 5, nil, 0, Forest)
@@ -65,9 +65,9 @@ func TestItPlacesCardInLeftMostExposedColumn(t *testing.T) {
 
 func TestItPlacesCardsInMultipleHabitats(t *testing.T) {
     board := CreateBoard(
-        CreateRow(Forest, 5),
-        CreateRow(Grassland, 5),
-        CreateRow(Wetland, 5),
+        CreateRow(Forest, 5, GainFood),
+        CreateRow(Grassland, 5, LayEggs),
+        CreateRow(Wetland, 5, DrawCards),
     )
 
     card := CreateCard("Cockatiel", 5, nil, 0, Forest)
@@ -105,7 +105,7 @@ func TestItPlacesCardsInMultipleHabitats(t *testing.T) {
 
 func TestItDoesNotPlaceMoreThanTheNumberOfColumns(t *testing.T) {
     board := CreateBoard(
-        CreateRow(Forest, 2),
+        CreateRow(Forest, 2, GainFood),
     )
 
     card := CreateCard("Cockatiel", 5, nil, 0, Forest)
