@@ -44,8 +44,8 @@ func (list *LinkedList) Get(index uint8) *Card {
 	if prev != nil {
 		prev.next = cur.next
 	} else {
-        list.head = cur.next
-    }
+		list.head = cur.next
+	}
 
 	return cur.card
 }

@@ -13,17 +13,17 @@ type OrCondition struct {
 }
 
 type SingleCondition struct {
-    requirement Food
+	requirement Food
 }
 
 func (cond SingleCondition) Apply(source []Food) []uint8 {
 	for index, food := range source {
-        if cond.requirement == food {
-            return []uint8{uint8(index)}
-        }
+		if cond.requirement == food {
+			return []uint8{uint8(index)}
+		}
 	}
 
-    return []uint8{}
+	return []uint8{}
 }
 
 func (cond OrCondition) Apply(source []Food) []uint8 {

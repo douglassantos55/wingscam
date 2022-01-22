@@ -3,7 +3,7 @@ package main
 import "testing"
 
 func TestBirdLaysEggs(t *testing.T) {
-    card := &Card{eggsLimit: 4}
+	card := &Card{eggsLimit: 4}
 	card.LayEggs(2)
 
 	if card.CountEggs() != 2 {
@@ -12,7 +12,7 @@ func TestBirdLaysEggs(t *testing.T) {
 }
 
 func TestEggsLimitIsRespected(t *testing.T) {
-    card := &Card{eggsLimit: 2}
+	card := &Card{eggsLimit: 2}
 	card.LayEggs(4)
 
 	if card.CountEggs() != 2 {

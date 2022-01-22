@@ -58,7 +58,7 @@ func (game *Game) DrawCards() {
 
 	if row != nil {
 		qty := row.CountCards()/2 + 1
-        game.current.DrawCards(int(qty))
+		game.current.DrawCards(int(qty))
 
 		row.ActivatePowers()
 	}

@@ -39,13 +39,13 @@ func (feeder *Feeder) GetFood(index uint8) Food {
 		feeder.fill(5)
 	}
 
-    if index < feeder.Count() {
-        food := feeder.foods[index]
-        feeder.foods = append(feeder.foods[:index], feeder.foods[index+1:]...)
-        return food
-    }
+	if index < feeder.Count() {
+		food := feeder.foods[index]
+		feeder.foods = append(feeder.foods[:index], feeder.foods[index+1:]...)
+		return food
+	}
 
-    panic("Out of bounds")
+	panic("Out of bounds")
 }
 
 func (feeder *Feeder) Count() uint8 {

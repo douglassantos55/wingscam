@@ -1,13 +1,13 @@
 package main
 
-type NotEnoughFoodError struct {}
+type NotEnoughFoodError struct{}
 
 func (e NotEnoughFoodError) Error() string {
-    return "Not enough food"
+	return "Not enough food"
 }
 
-type NotEnoughEggsError struct {}
+type NotEnoughEggsError struct{}
 
 func (e NotEnoughEggsError) Error() string {
-    return "Not enough eggs"
+	return "Not enough eggs"
 }

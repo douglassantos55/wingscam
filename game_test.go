@@ -126,7 +126,7 @@ func TestDrawCardsActivatesPowers(t *testing.T) {
 	game.PlayCard()
 	game.PlayCard()
 
-    // Drawing here gets 2 cards again, cause 3rd column
+	// Drawing here gets 2 cards again, cause 3rd column
 	game.DrawCards()
 
 	if player1.CountCardsInHand() != 2 {
