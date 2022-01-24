@@ -7,3 +7,4 @@ const (
 	Grassland         = iota
 	Wetland           = iota
 )
+

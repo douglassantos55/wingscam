@@ -14,7 +14,7 @@ func TestNotEnoughFood(t *testing.T) {
 	player.GainFood(Seed)
 	player.GainFood(Rodent)
 
-	if player.PayFood(card.foodCost) {
+	if player.PayFood(card.FoodCost) {
 		t.Errorf("Expected to not have the food cost necessary to play the card")
 	}
 
@@ -33,7 +33,7 @@ func TestWithEnoughFood(t *testing.T) {
 	player.GainFood(Fish)
 	player.GainFood(Invertebrate)
 
-	if !player.PayFood(card.foodCost) {
+	if !player.PayFood(card.FoodCost) {
 		t.Errorf("Expected to have the food cost necessary to play the card")
 	}
 
@@ -53,7 +53,7 @@ func TestWithEnoughOrFood(t *testing.T) {
 	player.GainFood(Fruit)
 	player.GainFood(Invertebrate)
 
-	if !player.PayFood(card.foodCost) {
+	if !player.PayFood(card.FoodCost) {
 		t.Errorf("Expected to have the food cost necessary to play the card")
 	}
 
@@ -71,7 +71,7 @@ func TestNotEnoughOrFood(t *testing.T) {
 	player.GainFood(Fruit)
 	player.GainFood(Seed)
 
-	if player.PayFood(card.foodCost) {
+	if player.PayFood(card.FoodCost) {
 		t.Errorf("Expected to not have the food cost necessary to play the card")
 	}
 
@@ -89,7 +89,7 @@ func TestNotEnoughSingleFood(t *testing.T) {
 	player.GainFood(Fruit)
 	player.GainFood(Seed)
 
-	if player.PayFood(card.foodCost) {
+	if player.PayFood(card.FoodCost) {
 		t.Errorf("Expected to not have the food cost necessary to play the card")
 	}
 
@@ -108,7 +108,7 @@ func TestEnoughSingleFood(t *testing.T) {
 	player.GainFood(Seed)
 	player.GainFood(Invertebrate)
 
-	if !player.PayFood(card.foodCost) {
+	if !player.PayFood(card.FoodCost) {
 		t.Errorf("Expected to not have the food cost necessary to play the card")
 	}
 

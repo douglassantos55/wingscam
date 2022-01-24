@@ -63,14 +63,14 @@ func (cond AndCondition) Apply(source []Food) []uint8 {
 	return v
 }
 
-func And(foods ...Food) AndCondition {
+func And(foods ...Food) Condition {
 	return AndCondition{requirements: foods}
 }
 
-func Or(foods ...Food) OrCondition {
+func Or(foods ...Food) Condition {
 	return OrCondition{requirements: foods}
 }
 
-func Single(food Food) SingleCondition {
+func Single(food Food) Condition {
 	return SingleCondition{requirement: food}
 }

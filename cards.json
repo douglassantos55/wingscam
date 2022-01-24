@@ -1,0 +1,165 @@
+{
+    "cards": [
+        {
+            "name": "Burrowing Owl",
+            "eggsLimit": 4,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "rodent"
+        },
+        {
+            "name": "Bald Eagle",
+            "eggsLimit": 5,
+            "habitat": "grassland",
+            "costType": "single",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Peregrine Falcon",
+            "eggsLimit": 2,
+            "habitat": "wetland",
+            "costType": "and",
+            "foodCost": "rodent"
+        },
+        {
+            "name": "Spotted Sandpiper",
+            "eggsLimit": 2,
+            "habitat": "wetland",
+            "costType": "single",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Cassin's Finch",
+            "eggsLimit": 3,
+            "habitat": "forest",
+            "costType": "and",
+            "foodCost": "seed"
+        },
+        {
+            "name": "Nothern Harrier",
+            "eggsLimit": 2,
+            "habitat": "wetland",
+            "costType": "single",
+            "foodCost": "rodent"
+        },
+        {
+            "name": "Cooper's Hawk",
+            "eggsLimit": 2,
+            "habitat": "forest",
+            "costType": "single",
+            "foodCost": "rodent"
+        },
+        {
+            "name": "Red-shouldered Hawk",
+            "eggsLimit": 2,
+            "habitat": "forest",
+            "costType": "single",
+            "foodCost": "rodent"
+        },
+        {
+            "name": "Barred Owl",
+            "eggsLimit": 2,
+            "habitat": "forest",
+            "costType": "single",
+            "foodCost": "rodent"
+        },
+        {
+            "name": "Swaison's Hawk",
+            "eggsLimit": 2,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Swaison's Hawk",
+            "eggsLimit": 2,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Brewer's Blackbird",
+            "eggsLimit": 3,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "seed"
+        },
+        {
+            "name": "Trumpeter Swan",
+            "eggsLimit": 2,
+            "habitat": "wetland",
+            "costType": "and",
+            "foodCost": "seed"
+        },
+        {
+            "name": "Loggerhead Shrike",
+            "eggsLimit": 4,
+            "habitat": "wetland",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "American Avocet",
+            "eggsLimit": 2,
+            "habitat": "wetland",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Brown-headed Cowbird",
+            "eggsLimit": 0,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "seed"
+        },
+        {
+            "name": "Yellow-bided Cuckoo",
+            "eggsLimit": 2,
+            "habitat": "forest",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Bronzed Cowbird",
+            "eggsLimit": 0,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Barrows Goldeneye",
+            "eggsLimit": 4,
+            "habitat": "wetland",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        },
+        {
+            "name": "Eastern Kingbird",
+            "eggsLimit": 2,
+            "habitat": "wetland",
+            "costType": "or",
+            "foodCost": "fruit"
+        },
+        {
+            "name": "Belted Kingfisher",
+            "eggsLimit": 4,
+            "habitat": "wetland",
+            "costType": "and",
+            "foodCost": "fish"
+        },
+        {
+            "name": "Turkey Vulture",
+            "eggsLimit": 1,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "fish"
+        },
+        {
+            "name": "Horned Lark",
+            "eggsLimit": 4,
+            "habitat": "grassland",
+            "costType": "and",
+            "foodCost": "invertebrate"
+        }
+    ]
+}

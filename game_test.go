@@ -2,9 +2,16 @@ package main
 
 import "testing"
 
+type FakeChooser struct{}
+
+func (t FakeChooser) Choose(items interface{}) int {
+	return 0
+}
+
 func TestGainFood(t *testing.T) {
+	fakeChooser := FakeChooser{}
 	player1 := CreatePlayer(nil)
-	game := CreateGame(player1)
+	game := CreateGame(fakeChooser, player1)
 	game.GainFood()
 
 	if len(player1.foods) != 1 {
@@ -22,9 +29,10 @@ func TestGainFoodActivatesCardsPower(t *testing.T) {
 	another := CreateCard("another", 2, nil, 0, Forest)
 	another.GivePower(WhenActivated, LayEggPower{1, another})
 
+	fakeChooser := FakeChooser{}
 	deck := CreateDeck(another, other, card)
 	player1 := CreatePlayer(deck)
-	game := CreateGame(player1)
+	game := CreateGame(fakeChooser, player1)
 
 	player1.DrawCards(3)
 	game.PlayCard()
@@ -47,7 +55,8 @@ func TestGainFoodActivatesCardsPower(t *testing.T) {
 
 func TestLayEggs(t *testing.T) {
 	player1 := CreatePlayer(nil)
-	game := CreateGame(player1)
+	fakeChooser := FakeChooser{}
+	game := CreateGame(fakeChooser, player1)
 
 	card := CreateCard("name", 2, nil, 0, Forest)
 	player1.DrawCard(card)
@@ -62,7 +71,8 @@ func TestLayEggs(t *testing.T) {
 
 func TestLayEggsActivatesCardsPower(t *testing.T) {
 	player1 := CreatePlayer(nil)
-	game := CreateGame(player1)
+	fakeChooser := FakeChooser{}
+	game := CreateGame(fakeChooser, player1)
 
 	card := CreateCard("name", 2, nil, 0, Grassland)
 	card.GivePower(WhenActivated, LayEggPower{1, card})
@@ -99,7 +109,8 @@ func TestDrawCards(t *testing.T) {
 	another := CreateCard("another", 2, nil, 0, Wetland)
 	deck := CreateDeck(card, another)
 	player1 := CreatePlayer(deck)
-	game := CreateGame(player1)
+	fakeChooser := FakeChooser{}
+	game := CreateGame(fakeChooser, player1)
 
 	game.DrawCards()
 
@@ -121,7 +132,8 @@ func TestDrawCardsActivatesPowers(t *testing.T) {
 	player1.DrawCard(another)
 	player1.DrawCard(card)
 
-	game := CreateGame(player1)
+	fakeChooser := FakeChooser{}
+	game := CreateGame(fakeChooser, player1)
 
 	game.PlayCard()
 	game.PlayCard()

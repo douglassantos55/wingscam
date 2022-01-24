@@ -31,7 +31,7 @@ func (board *Board) GetHabitat(habitat Habitat) *Row {
 }
 
 func (board *Board) PlaceCard(card *Card) int {
-	row := board.GetHabitat(card.habitat)
+	row := board.GetHabitat(card.Habitat)
 
 	if row != nil {
 		return row.PlaceCard(card)

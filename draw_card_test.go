@@ -3,8 +3,8 @@ package main
 import "testing"
 
 func TestRemoveCardFromDeck(t *testing.T) {
-	mocking := &Card{name: "Mocking bird"}
-	cockatiel := &Card{name: "Cockatiel"}
+	mocking := &Card{Name: "Mocking bird"}
+	cockatiel := &Card{Name: "Cockatiel"}
 
 	deck := CreateDeck(mocking, cockatiel)
 	drawn := deck.Draw()
@@ -15,8 +15,8 @@ func TestRemoveCardFromDeck(t *testing.T) {
 }
 
 func TestPlayerReceivesCard(t *testing.T) {
-	mocking := &Card{name: "Mocking bird"}
-	cockatiel := &Card{name: "Cockatiel"}
+	mocking := &Card{Name: "Mocking bird"}
+	cockatiel := &Card{Name: "Cockatiel"}
 
 	deck := CreateDeck(mocking, cockatiel)
 	player := CreatePlayer(deck)
@@ -40,9 +40,9 @@ func TestDrawFromEmptyDeck(t *testing.T) {
 }
 
 func TestDrawFromTray(t *testing.T) {
-	mocking := &Card{name: "Mocking bird"}
-	cockatiel := &Card{name: "Cockatiel"}
-	goose := &Card{name: "Goose"}
+	mocking := &Card{Name: "Mocking bird"}
+	cockatiel := &Card{Name: "Cockatiel"}
+	goose := &Card{Name: "Goose"}
 
 	deck := CreateDeck(mocking, cockatiel, goose)
 
@@ -67,9 +67,9 @@ func TestDrawFromTray(t *testing.T) {
 }
 
 func TestGetCardOutOfBoundsFromTray(t *testing.T) {
-	mocking := &Card{name: "Mocking bird"}
-	cockatiel := &Card{name: "Cockatiel"}
-	goose := &Card{name: "Goose"}
+	mocking := &Card{Name: "Mocking bird"}
+	cockatiel := &Card{Name: "Cockatiel"}
+	goose := &Card{Name: "Goose"}
 
 	deck := CreateDeck(mocking, cockatiel, goose)
 

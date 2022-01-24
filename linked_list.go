@@ -49,3 +49,13 @@ func (list *LinkedList) Get(index uint8) *Card {
 
 	return cur.card
 }
+
+func (list *LinkedList) All() []*Card {
+    cards := []*Card{}
+
+	for cur := list.head; cur != nil; cur = cur.next {
+        cards = append(cards, cur.card)
+	}
+
+	return cards
+}
